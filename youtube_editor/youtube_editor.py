@@ -39,7 +39,7 @@ def get_embed_string_from(excerpt, video_url):
     start, end = [convert_to_seconds_from(item)
                   for item in times]\
         if all(times) else times
-    if not times:
+    if not all(times):
         needle = '?rel=0&start={start}&end={end}'
         return embeded_video_template.replace(needle, '').format(
             video_url=video_url,
