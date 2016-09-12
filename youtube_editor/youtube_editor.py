@@ -17,6 +17,15 @@ def convert_to_seconds_from(timestring, delimiter=":"):
     )
 
 
+def get_youtube_url_from(video_id):
+    """Make a YouTube embed url
+
+    :returns: Notebook safe url
+    """
+    return 'https://www.youtube.com/embed/{}?rel=0'.format(
+        video_id)
+
+
 def get_embed_string_from(excerpt, video_url):
     """Create some HTML to display the YouTube video excerpts."""
     EMPTY_STRING = ''
@@ -40,7 +49,9 @@ def get_embed_string_from(excerpt, video_url):
                   for item in times]\
         if all(times) else times
     if not all(times):
-        needle = '?rel=0&start={start}&end={end}'
+        # the ?rel=0 MUST stay or the video does not load
+        # for security reasons, Chrome blocks
+        needle = '&start={start}&end={end}'
         return embeded_video_template.replace(needle, '').format(
             video_url=video_url,
             label=label,
