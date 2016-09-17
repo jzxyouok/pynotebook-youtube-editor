@@ -8,7 +8,7 @@ with open(requirements_file, 'r') as fh:
 
 setup(
       name='youtube_editor',
-      version='0.1.3',
+      version='0.1.4',
       install_requires=requirements,
       description='A quick and dirty package for creating YouTube edits in Jupyter notebooks.',
       url='git@github.com:dm-wyncode/pynotebook-youtube-editor.git',
